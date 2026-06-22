@@ -1,0 +1,1324 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Plan de Éxito</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --card: #1e1e1e;
+    --border: #2a2a2a;
+    --accent: #c8f04d;
+    --accent2: #4df0b8;
+    --accent3: #f04d7a;
+    --accent4: #f0a84d;
+    --text: #f0ece4;
+    --muted: #7a7a7a;
+    --display: 'Playfair Display', serif;
+    --body: 'Space Grotesk', sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--body);
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    height: 58px;
+    gap: 0;
+  }
+
+  .nav-brand {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    color: var(--accent);
+    margin-right: auto;
+    letter-spacing: -0.02em;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-links a {
+    display: block;
+    padding: 0 1rem;
+    line-height: 58px;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    border-left: 1px solid var(--border);
+  }
+
+  .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+  /* SECTIONS */
+  section {
+    display: none;
+    min-height: 100vh;
+    padding: 80px 0 60px;
+  }
+
+  section.visible { display: block; }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* HERO */
+  #s-vision .hero {
+    padding: 5rem 2rem 4rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.2rem;
+  }
+
+  h1.display {
+    font-family: var(--display);
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+  }
+
+  h1.display span { color: var(--accent); }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--muted);
+    max-width: 520px;
+    margin-bottom: 3rem;
+    line-height: 1.75;
+  }
+
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 3rem;
+  }
+
+  .pillar {
+    background: var(--surface);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .pillar:hover { background: var(--card); }
+
+  .pillar-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .pillar-name {
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .pillar-desc {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .base-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .base-box h3 {
+    font-family: var(--display);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+    color: var(--accent);
+  }
+
+  .base-box p { color: var(--muted); line-height: 1.8; }
+
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-top: 2rem;
+  }
+
+  .stat {
+    background: var(--surface);
+    padding: 1.5rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--display);
+    font-size: 2.2rem;
+    color: var(--accent);
+    display: block;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* SECTION HEADERS */
+  .sec-header {
+    padding: 4rem 2rem 2.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+  }
+
+  h2.sec-title {
+    font-family: var(--display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.6rem;
+  }
+
+  .sec-sub { color: var(--muted); font-size: 0.9rem; }
+
+  /* RUTINA */
+  .day-tabs {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .day-tab {
+    flex: 1;
+    background: var(--surface);
+    border: none;
+    color: var(--muted);
+    padding: 0.9rem 0.4rem;
+    font-family: var(--body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+
+  .day-tab:hover { background: var(--card); color: var(--text); }
+  .day-tab.active { background: var(--accent); color: #000; }
+
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tl-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .tl-time {
+    padding: 1.2rem 1rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    border-right: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  .tl-content {
+    padding: 1.2rem 1.5rem;
+    background: var(--card);
+  }
+
+  .tl-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+  }
+
+  .tl-detail {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .tl-tag {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    margin-top: 0.4rem;
+    margin-right: 0.3rem;
+  }
+
+  .tag-fisico { background: rgba(240,75,122,0.15); color: var(--accent3); }
+  .tag-dinero { background: rgba(200,240,77,0.12); color: var(--accent); }
+  .tag-mente { background: rgba(77,240,184,0.12); color: var(--accent2); }
+  .tag-social { background: rgba(240,168,77,0.12); color: var(--accent4); }
+  .tag-descanso { background: rgba(122,122,122,0.15); color: var(--muted); }
+
+  /* PLAN SEMANAL */
+  .week-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .week-day {
+    background: var(--card);
+    padding: 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .wd-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    padding-top: 0.2rem;
+  }
+
+  .wd-body h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: var(--text);
+  }
+
+  .wd-body p { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
+
+  /* MESES */
+  .phase {
+    margin-bottom: 3rem;
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .phase-num {
+    font-family: var(--display);
+    font-size: 3rem;
+    color: var(--border);
+    line-height: 1;
+    font-weight: 900;
+  }
+
+  .phase-info h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+
+  .phase-info p { font-size: 0.82rem; color: var(--muted); }
+
+  .mes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .mes-card {
+    background: var(--card);
+    padding: 1.5rem;
+  }
+
+  .mes-num {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.5rem;
+  }
+
+  .mes-card h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text);
+    line-height: 1.3;
+  }
+
+  .mes-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .mes-list li {
+    font-size: 0.8rem;
+    color: var(--muted);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .mes-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.7rem;
+  }
+
+  /* FINANZAS */
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .budget-table th, .budget-table td {
+    padding: 0.9rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.83rem;
+  }
+
+  .budget-table th {
+    background: var(--surface);
+    color: var(--muted);
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .budget-table td { background: var(--card); }
+  .budget-table tr:last-child td { border-bottom: none; }
+
+  .amount-col { color: var(--accent); font-weight: 600; font-family: monospace; }
+  .total-row td { color: var(--text); font-weight: 700; background: var(--surface) !important; }
+
+  .invest-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .invest-card {
+    background: var(--card);
+    padding: 1.5rem;
+  }
+
+  .invest-card h4 {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 0.5rem;
+  }
+
+  .invest-card p { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+  /* HABILIDADES */
+  .skill-block {
+    border: 1px solid var(--border);
+    margin-bottom: 1px;
+    background: var(--card);
+  }
+
+  .skill-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .skill-header:hover { background: var(--surface); }
+
+  .skill-header h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+  }
+
+  .skill-header span {
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .skill-body {
+    padding: 0 1.5rem 1.5rem;
+    border-top: 1px solid var(--border);
+    display: none;
+  }
+
+  .skill-body.open { display: block; }
+
+  .skill-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .skill-meta-item { font-size: 0.8rem; }
+  .skill-meta-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .skill-meta-val { color: var(--text); line-height: 1.5; }
+
+  /* LIBROS */
+  .libro-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .libro {
+    background: var(--card);
+    padding: 1.2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .libro-num {
+    font-family: var(--display);
+    font-size: 1.6rem;
+    color: var(--border);
+    font-weight: 900;
+    line-height: 1;
+    padding-top: 0.1rem;
+  }
+
+  .libro h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.25rem; color: var(--text); }
+  .libro-autor { font-size: 0.75rem; color: var(--accent); margin-bottom: 0.4rem; }
+  .libro p { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
+
+  /* REGLAS */
+  .regla-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .regla {
+    background: var(--card);
+    padding: 1.5rem 2rem;
+    border-left: 3px solid var(--border);
+    transition: border-color 0.2s;
+  }
+
+  .regla:hover { border-left-color: var(--accent); }
+  .regla h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 0.35rem; color: var(--text); }
+  .regla p { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+
+  .closing-box {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    padding: 2.5rem;
+    text-align: center;
+  }
+
+  .closing-box h3 {
+    font-family: var(--display);
+    font-size: 1.8rem;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+
+  .closing-box p { color: var(--muted); max-width: 480px; margin: 0 auto; line-height: 1.75; }
+
+  @media (max-width: 640px) {
+    nav { padding: 0 1rem; }
+    .nav-links a { padding: 0 0.5rem; font-size: 0.65rem; }
+    .nav-brand { font-size: 0.9rem; }
+    .week-day { grid-template-columns: 1fr; gap: 0.3rem; }
+    .tl-item { grid-template-columns: 64px 1fr; }
+    .stat-row { grid-template-columns: 1fr 1fr 1fr; }
+    .skill-meta { grid-template-columns: 1fr; }
+    .day-tab { font-size: 0.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">Mi Plan</div>
+  <ul class="nav-links">
+    <li><a href="#" onclick="show('s-vision')" id="tab-s-vision" class="active">Visión</a></li>
+    <li><a href="#" onclick="show('s-rutina')" id="tab-s-rutina">Rutina</a></li>
+    <li><a href="#" onclick="show('s-semanal')" id="tab-s-semanal">Semana</a></li>
+    <li><a href="#" onclick="show('s-meses')" id="tab-s-meses">18 Meses</a></li>
+    <li><a href="#" onclick="show('s-finanzas')" id="tab-s-finanzas">Finanzas</a></li>
+    <li><a href="#" onclick="show('s-habilidades')" id="tab-s-habilidades">Habilidades</a></li>
+    <li><a href="#" onclick="show('s-libros')" id="tab-s-libros">Libros</a></li>
+    <li><a href="#" onclick="show('s-reglas')" id="tab-s-reglas">Reglas</a></li>
+  </ul>
+</nav>
+
+<!-- VISIÓN -->
+<section id="s-vision" class="visible">
+  <div class="hero">
+    <div class="eyebrow">Plan Personalizado · 18 Meses</div>
+    <h1 class="display">El camino al éxito<br><span>empieza hoy.</span></h1>
+    <p class="hero-sub">Eres menor de 20 años, ya trabajas en contabilidad, ya entrenas, y ya tienes un activo en camino. Eso es una base que la mayoría nunca construye. Este plan convierte esa ventaja en resultados reales.</p>
+
+    <div class="pillars">
+      <div class="pillar">
+        <div class="pillar-icon">💪</div>
+        <div class="pillar-name">Físico</div>
+        <div class="pillar-desc">Cuerpo fuerte, energía alta, salud a largo plazo.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">💰</div>
+        <div class="pillar-name">Dinero</div>
+        <div class="pillar-desc">Ahorro, inversión y habilidades que generan ingresos extra.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🧠</div>
+        <div class="pillar-name">Mente</div>
+        <div class="pillar-desc">Conocimiento práctico en finanzas, inglés y análisis.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">🤝</div>
+        <div class="pillar-name">Social</div>
+        <div class="pillar-desc">Red de contactos, presencia y relaciones de valor.</div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon">😌</div>
+        <div class="pillar-name">Felicidad</div>
+        <div class="pillar-desc">Propósito, gratitud y equilibrio mental diario.</div>
+      </div>
+    </div>
+
+    <div class="base-box">
+      <h3>La regla número uno</h3>
+      <p>La consistencia gana a la intensidad. No necesitas un día perfecto. Necesitas no parar. La persona que avanza un 1% cada día durante 18 meses le gana siempre al que lo da todo durante 3 semanas y para. Tu trabajo es presentarte cada día, no ser perfecto.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat">
+        <span class="stat-num">18</span>
+        <span class="stat-label">Meses del plan</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5</span>
+        <span class="stat-label">Habilidades clave</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">12</span>
+        <span class="stat-label">Libros del año</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RUTINA DIARIA -->
+<section id="s-rutina">
+  <div class="sec-header">
+    <div class="eyebrow">Día a día</div>
+    <h2 class="sec-title">Rutina Diaria</h2>
+    <p class="sec-sub">Ajustada a tus 1–2 horas libres. Selecciona el tipo de día.</p>
+  </div>
+  <div class="container">
+    <div class="day-tabs">
+      <button class="day-tab active" onclick="showDay('semana', this)">Lun – Vie</button>
+      <button class="day-tab" onclick="showDay('sabado', this)">Sábado</button>
+      <button class="day-tab" onclick="showDay('domingo', this)">Domingo</button>
+    </div>
+
+    <div id="rutina-semana" class="timeline">
+      <div class="tl-item"><div class="tl-time">5:30</div><div class="tl-content"><div class="tl-title">Despertar sin snooze</div><div class="tl-detail">Al despertar, bebe un vaso de agua. Evita el teléfono los primeros 10 minutos. Esto protege tu enfoque matutino.</div></div></div>
+      <div class="tl-item"><div class="tl-time">5:40</div><div class="tl-content"><div class="tl-title">10 min de activación</div><div class="tl-detail">No es un entreno, es despertar el cuerpo: 10 sentadillas, 10 flexiones, 1 minuto de respiración profunda. Esto basta para activar el metabolismo.</div><span class="tl-tag tag-fisico">Físico</span></div></div>
+      <div class="tl-item"><div class="tl-time">6:00</div><div class="tl-content"><div class="tl-title">Desayuno con proteína</div><div class="tl-detail">Mínimo 25–30g de proteína: huevos, avena con leche, yogur griego. Nada de solo pan o café solo. El desayuno proteico reduce antojos todo el día.</div><span class="tl-tag tag-fisico">Físico</span></div></div>
+      <div class="tl-item"><div class="tl-time">6:30</div><div class="tl-content"><div class="tl-title">30 min de estudio</div><div class="tl-detail">Este es tu bloque más valioso. El cerebro a las 6:30am retiene mejor que a las 10pm. Estudia la habilidad del día (ver plan semanal): Excel, inversión o inglés.</div><span class="tl-tag tag-mente">Mente</span><span class="tl-tag tag-dinero">Dinero</span></div></div>
+      <div class="tl-item"><div class="tl-time">7:00</div><div class="tl-content"><div class="tl-title">Trabajo</div><div class="tl-detail">Aplica los conocimientos de contabilidad que ya tienes. Observa cómo funcionan las finanzas reales de la empresa: flujo de caja, costos, márgenes. Es tu laboratorio gratuito.</div></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-content"><div class="tl-title">Almuerzo inteligente</div><div class="tl-detail">Proteína + carbohidrato complejo + vegetal. Evita los fritados y las gaseosas entre semana. Esto no es dieta, es combustible.</div><span class="tl-tag tag-fisico">Físico</span></div></div>
+      <div class="tl-item"><div class="tl-time">17:00</div><div class="tl-content"><div class="tl-title">Entreno (según plan semanal)</div><div class="tl-detail">45–55 minutos. Sigue el plan muscular del día. No improvises: ejecuta lo que está programado con la técnica correcta antes de aumentar peso.</div><span class="tl-tag tag-fisico">Físico</span></div></div>
+      <div class="tl-item"><div class="tl-time">18:30</div><div class="tl-content"><div class="tl-title">Cena + recuperación</div><div class="tl-detail">Proteína + vegetales. Limita carbos en la noche. Revisa que hayas tomado suficiente agua en el día (2–2.5L).</div><span class="tl-tag tag-fisico">Físico</span></div></div>
+      <div class="tl-item"><div class="tl-time">19:30</div><div class="tl-content"><div class="tl-title">Bloque libre + lectura</div><div class="tl-detail">20 min de lectura del libro del mes antes de cualquier red social. Si hay energía: continúa el curso del día o revisa mercados (Tyba, TradingView).</div><span class="tl-tag tag-mente">Mente</span></div></div>
+      <div class="tl-item"><div class="tl-time">21:30</div><div class="tl-content"><div class="tl-title">Cierre del día</div><div class="tl-detail">Anota 3 cosas buenas del día (toma 2 minutos). Marca el checklist. Prepara la ropa y la mochila del día siguiente. Apaga pantallas.</div><span class="tl-tag tag-felicidad">😌 Felicidad</span></div></div>
+      <div class="tl-item"><div class="tl-time">22:00</div><div class="tl-content"><div class="tl-title">Dormir</div><div class="tl-detail">7.5 horas mínimo. El sueño construye músculo, fija lo aprendido y regula las hormonas. Es el hábito con mayor retorno de todos.</div><span class="tl-tag tag-descanso">Descanso</span></div></div>
+    </div>
+
+    <div id="rutina-sabado" class="timeline" style="display:none">
+      <div class="tl-item"><div class="tl-time">7:00</div><div class="tl-content"><div class="tl-title">Despertar natural</div><div class="tl-detail">Sin alarma si es posible, pero no más de las 8am. Mantener el ciclo del sueño estable es clave, incluso los fines de semana.</div><span class="tl-tag tag-descanso">Descanso</span></div></div>
+      <div class="tl-item"><div class="tl-time">7:30</div><div class="tl-content"><div class="tl-title">Cardio ligero al aire libre</div><div class="tl-detail">30–40 minutos de caminata rápida, trote suave o bicicleta. El objetivo no es quemar calorías sino activar la mente, reducir cortisol y mejorar el estado de ánimo para el resto del día.</div><span class="tl-tag tag-fisico">Físico</span></div></div>
+      <div class="tl-item"><div class="tl-time">9:00</div><div class="tl-content"><div class="tl-title">Bloque de estudio profundo (90 min)</div><div class="tl-detail">El bloque más importante de la semana. Sin interrupciones. Usa este tiempo para el tema más difícil: análisis de inversiones, práctica de Excel avanzado, o inglés de lectura técnica (artículos de economía en inglés).</div><span class="tl-tag tag-mente">Mente</span><span class="tl-tag tag-dinero">Dinero</span></div></div>
+      <div class="tl-item"><div class="tl-time">10:30</div><div class="tl-content"><div class="tl-title">Tiempo libre / social</div><div class="tl-detail">Amigos, familia, ocio. Sin culpa. La salud social y el descanso mental son parte del plan, no una interrupción de él.</div><span class="tl-tag tag-social">Social</span></div></div>
+      <div class="tl-item"><div class="tl-time">15:00</div><div class="tl-content"><div class="tl-title">Revisión financiera mensual (una vez al mes)</div><div class="tl-detail">El primer sábado del mes: revisa el presupuesto, registra cuánto ahorraste, ve cuánto creció tu inversión en Tyba/ETFs. Tarda 30 minutos máximo.</div><span class="tl-tag tag-dinero">Dinero</span></div></div>
+      <div class="tl-item"><div class="tl-time">22:00</div><div class="tl-content"><div class="tl-title">Dormir</div><div class="tl-detail">Máximo 23:30 los sábados. No rompas el ciclo más de 1.5 horas o el lunes lo pagas.</div><span class="tl-tag tag-descanso">Descanso</span></div></div>
+    </div>
+
+    <div id="rutina-domingo" class="timeline" style="display:none">
+      <div class="tl-item"><div class="tl-time">8:00</div><div class="tl-content"><div class="tl-title">Despertar tranquilo</div><div class="tl-detail">Desayuno sin prisa. El domingo empieza despacio, termina preparado.</div><span class="tl-tag tag-descanso">Descanso</span></div></div>
+      <div class="tl-item"><div class="tl-time">10:00</div><div class="tl-content"><div class="tl-title">Planificación de la semana (30 min)</div><div class="tl-detail">Abre el tracker. Define las 3 prioridades de la semana. Revisa qué hábitos fallaste la semana anterior y decide cómo no repetirlo. Este momento vale más que cualquier motivación.</div><span class="tl-tag tag-mente">Mente</span></div></div>
+      <div class="tl-item"><div class="tl-time">11:00</div><div class="tl-content"><div class="tl-title">Lectura o podcast educativo</div><div class="tl-detail">Continúa el libro del mes, o escucha un episodio de un podcast de finanzas o negocios: "Cracks con Oso Trava", "How I Built This", "We Study Billionaires" (en inglés).</div><span class="tl-tag tag-mente">Mente</span></div></div>
+      <div class="tl-item"><div class="tl-time">14:00</div><div class="tl-content"><div class="tl-title">Tiempo personal / familia</div><div class="tl-detail">Sin estudiar. El descanso mental es parte del entrenamiento, no un lujo. Quien no descansa termina abandonando.</div><span class="tl-tag tag-descanso">Descanso</span></div></div>
+      <div class="tl-item"><div class="tl-time">20:00</div><div class="tl-content"><div class="tl-title">Preparación para el lunes</div><div class="tl-detail">Ropa lista, mochila lista, saber exactamente qué vas a estudiar el lunes en la mañana. Esto elimina la fricción que arruina las mañanas.</div></div></div>
+      <div class="tl-item"><div class="tl-time">21:30</div><div class="tl-content"><div class="tl-title">Dormir</div><div class="tl-detail">El domingo temprano es el secreto de los lunes poderosos.</div><span class="tl-tag tag-descanso">Descanso</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN SEMANAL -->
+<section id="s-semanal">
+  <div class="sec-header">
+    <div class="eyebrow">Estructura base</div>
+    <h2 class="sec-title">Plan Semanal</h2>
+    <p class="sec-sub">La misma estructura cada semana. La repetición crea el hábito.</p>
+  </div>
+  <div class="container">
+    <div class="week-grid">
+      <div class="week-day">
+        <div class="wd-label">Lunes</div>
+        <div class="wd-body">
+          <h4>Pecho + Tríceps · Inversión básica</h4>
+          <p>Entreno: Press banca, fondos, aperturas, extensiones de tríceps. — Estudio (6:30am): Fundamentos de inversión: qué es un ETF, cómo funciona la bolsa, qué es el interés compuesto. Recurso: Tyba Academy o YouTube "Inversión Racional".</p>
+        </div>
+      </div>
+      <div class="week-day">
+        <div class="wd-label">Martes</div>
+        <div class="wd-body">
+          <h4>Espalda + Bíceps · Excel avanzado</h4>
+          <p>Entreno: Jalones, remo con barra, curl con barra, curl martillo. — Estudio (6:30am): Excel para finanzas: tablas dinámicas, BUSCARV, fórmulas financieras básicas. Recurso: "Excel para Contadores" en Udemy o YouTube.</p>
+        </div>
+      </div>
+      <div class="week-day">
+        <div class="wd-label">Miércoles</div>
+        <div class="wd-body">
+          <h4>Descanso activo · Inglés</h4>
+          <p>Sin entreno de pesas. Caminata de 20 min o yoga/estiramientos. — Estudio (6:30am): Inglés. Duolingo 10 min + leer un artículo corto en inglés (BBC, Investopedia). El inglés te abre el 80% del contenido financiero del mundo.</p>
+        </div>
+      </div>
+      <div class="week-day">
+        <div class="wd-label">Jueves</div>
+        <div class="wd-body">
+          <h4>Piernas · Inglés + Análisis</h4>
+          <p>Entreno: Sentadillas, prensa, extensiones, curl femoral, pantorrillas. — Estudio (6:30am): Inglés (Duolingo + ver un video en inglés con subtítulos: canal "Plain Bagel", "Graham Stephan" o "Andrei Jikh").</p>
+        </div>
+      </div>
+      <div class="week-day">
+        <div class="wd-label">Viernes</div>
+        <div class="wd-body">
+          <h4>Hombros + Core · Mercados</h4>
+          <p>Entreno: Press militar, elevaciones laterales, abdominales, plancha. — Estudio (6:30am): Revisa cómo están los mercados: abre Tyba o TradingView, mira el S&P 500 y el dólar/peso. Esto entrena la intuición financiera.</p>
+        </div>
+      </div>
+      <div class="week-day">
+        <div class="wd-label">Sábado</div>
+        <div class="wd-body">
+          <h4>Cardio ligero · Bloque profundo (90 min)</h4>
+          <p>Trote suave o bici 30 min. — Estudio: El tema más difícil de la semana sin interrupciones. Práctica real: armar un portafolio ficticio, analizar los estados financieros de una empresa colombiana, o hacer un ejercicio de Excel desde cero.</p>
+        </div>
+      </div>
+      <div class="week-day">
+        <div class="wd-label">Domingo</div>
+        <div class="wd-body">
+          <h4>Descanso total · Planificación</h4>
+          <p>Sin entreno. Sin estudio obligatorio. 30 minutos para revisar la semana: qué funcionó, qué no, qué priorizar la semana siguiente. Lee el libro del mes sin presión de tiempo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18 MESES -->
+<section id="s-meses">
+  <div class="sec-header">
+    <div class="eyebrow">El mapa</div>
+    <h2 class="sec-title">18 Meses</h2>
+    <p class="sec-sub">Tres fases de seis meses cada una. Cada fase construye sobre la anterior.</p>
+  </div>
+  <div class="container">
+
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">01</div>
+        <div class="phase-info">
+          <h3>Fase 1 — Construcción de bases (Meses 1–6)</h3>
+          <p>Crear los hábitos que sostendrán todo lo demás. Aquí no buscas resultados rápidos, buscas consistencia.</p>
+        </div>
+      </div>
+      <div class="mes-grid">
+        <div class="mes-card">
+          <div class="mes-num">Mes 1</div>
+          <h4>Orden y primeros pasos</h4>
+          <ul class="mes-list">
+            <li>Abrir cuenta de ahorros separada (Nubank o similar)</li>
+            <li>Empezar a registrar todos los gastos del mes</li>
+            <li>Crear cuenta en Tyba o Bancolombia Valores</li>
+            <li>Comenzar rutina de entreno del plan semanal</li>
+            <li>Instalar Duolingo e iniciar inglés nivel básico</li>
+            <li>Leer "Padre Rico Padre Pobre"</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 2</div>
+          <h4>Primer ahorro e inversión</h4>
+          <ul class="mes-list">
+            <li>Hacer primera inversión en Tyba (aunque sea $50.000)</li>
+            <li>Dominar tablas dinámicas en Excel</li>
+            <li>Mantener racha de 30 días en entreno</li>
+            <li>Aprender qué es un ETF y cómo comprarlo en Colombia</li>
+            <li>Leer "El Hombre Más Rico de Babilonia"</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 3</div>
+          <h4>Profundidad en finanzas</h4>
+          <ul class="mes-list">
+            <li>Aprender a leer un estado de resultados básico</li>
+            <li>BUSCARV e índice/coincidir dominados en Excel</li>
+            <li>Inglés: mantener racha Duolingo + leer 1 artículo semanal</li>
+            <li>Evaluar si el entreno actual genera cambios reales</li>
+            <li>Leer "Los Secretos de la Mente Millonaria"</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 4</div>
+          <h4>Primeras habilidades vendibles</h4>
+          <ul class="mes-list">
+            <li>Crear dashboard de finanzas personales en Excel</li>
+            <li>Abrir perfil en LinkedIn con descripción profesional</li>
+            <li>Hacer seguimiento real de la inversión en Tyba</li>
+            <li>Aumentar ingesta proteica al nivel óptimo</li>
+            <li>Leer "Hábitos Atómicos" (James Clear)</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 5</div>
+          <h4>Visibilidad y red</h4>
+          <ul class="mes-list">
+            <li>Publicar primer post en LinkedIn sobre contabilidad o finanzas</li>
+            <li>Hablar en inglés básico con confianza (videos cortos)</li>
+            <li>Aumentar carga de entrenamiento progresivamente</li>
+            <li>Explorar si hay forma de ofrecer servicios de Excel externamente</li>
+            <li>Leer "Cómo Ganar Amigos e Influir en las Personas"</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 6</div>
+          <h4>Revisión de la Fase 1</h4>
+          <ul class="mes-list">
+            <li>Revisar cuánto has ahorrado e invertido</li>
+            <li>Evaluar progreso físico (fotos, medidas, rendimiento)</li>
+            <li>Nivel de inglés: ¿puedes leer artículos con fluidez?</li>
+            <li>¿Tienes 2 publicaciones en LinkedIn? ¿Alguna conexión valiosa?</li>
+            <li>Leer "El Inversor Inteligente" (versión resumida o capítulos clave)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">02</div>
+        <div class="phase-info">
+          <h3>Fase 2 — Aceleración (Meses 7–12)</h3>
+          <p>Los hábitos ya están instalados. Ahora se trata de convertirlos en resultados tangibles: más músculo, más dinero, más red.</p>
+        </div>
+      </div>
+      <div class="mes-grid">
+        <div class="mes-card">
+          <div class="mes-num">Mes 7</div>
+          <h4>Primera fuente de ingreso extra</h4>
+          <ul class="mes-list">
+            <li>Ofrecer servicio de organización contable o Excel a freelance</li>
+            <li>Iniciar curso formal de análisis de inversiones (Coursera, platzi finanzas)</li>
+            <li>Aumentar inversión mensual si hay ingreso extra</li>
+            <li>Leer "La Semana Laboral de 4 Horas" (mindset de productividad)</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 8</div>
+          <h4>Análisis de portafolio</h4>
+          <ul class="mes-list">
+            <li>Entender la diferencia entre acciones, ETFs y bonos en la práctica</li>
+            <li>Armar un portafolio simulado y seguirlo mensualmente</li>
+            <li>LinkedIn: 5+ publicaciones y 200+ conexiones relevantes</li>
+            <li>Inglés: ver contenido educativo sin subtítulos</li>
+            <li>Leer "Padre Rico Cuadrante del Flujo de Dinero"</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 9</div>
+          <h4>Cuerpo y disciplina</h4>
+          <ul class="mes-list">
+            <li>Evaluar si el plan de entreno necesita ajuste (meseta muscular)</li>
+            <li>Considerar suplementación básica si es necesario (proteína, creatina)</li>
+            <li>Hablar en inglés: buscar un intercambio de idiomas online</li>
+            <li>Consolidar la habilidad de ventas: aprender a presentar propuestas</li>
+            <li>Leer "Thinking, Fast and Slow" (Kahneman) — en inglés si puedes</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 10</div>
+          <h4>Networking real</h4>
+          <ul class="mes-list">
+            <li>Asistir a un evento de finanzas, emprendimiento o contabilidad</li>
+            <li>Tener al menos 1 mentor o referente con quien hablar</li>
+            <li>Tener ahorrado mínimo 3 meses de "fondo de emergencia"</li>
+            <li>Evaluar si el apartamento va según lo planeado con tu padre</li>
+            <li>Leer "The Psychology of Money" (Housel)</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 11</div>
+          <h4>Ingresos extra estables</h4>
+          <ul class="mes-list">
+            <li>Tener al menos 1 cliente o proyecto freelance de contabilidad/Excel</li>
+            <li>Separar ese ingreso extra 100% para inversión</li>
+            <li>Inglés: mantener conversación básica en inglés</li>
+            <li>Actualizar el plan de inversión con nueva capacidad de ahorro</li>
+            <li>Leer "Esencialismo" (Greg McKeown)</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 12</div>
+          <h4>Revisión del año</h4>
+          <ul class="mes-list">
+            <li>Balance completo: cuánto ahorré, cuánto invertí, cuánto creció</li>
+            <li>Progreso físico real vs hace 12 meses</li>
+            <li>LinkedIn y red de contactos: ¿creció tu visibilidad?</li>
+            <li>Definir la meta financiera de los próximos 6 meses</li>
+            <li>Leer "Millonario de la Puerta de al Lado"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="phase">
+      <div class="phase-header">
+        <div class="phase-num">03</div>
+        <div class="phase-info">
+          <h3>Fase 3 — Consolidación (Meses 13–18)</h3>
+          <p>Los resultados son visibles. Ahora los consolidas y elevas. Ya no eres el mismo que empezó.</p>
+        </div>
+      </div>
+      <div class="mes-grid">
+        <div class="mes-card">
+          <div class="mes-num">Mes 13</div>
+          <h4>Expansión de inversión</h4>
+          <ul class="mes-list">
+            <li>Ampliar portafolio con ETFs internacionales (S&P 500, tecnología)</li>
+            <li>Abrir cuenta en broker con acceso a mercados internacionales</li>
+            <li>Inglés: leer un libro completo en inglés este mes</li>
+            <li>Empezar a pensar en una certificación contable o financiera</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 14</div>
+          <h4>Marca personal</h4>
+          <ul class="mes-list">
+            <li>LinkedIn con 500+ conexiones y publicaciones consistentes</li>
+            <li>Que alguien te contacte por tu perfil para una oportunidad</li>
+            <li>Tener un "portafolio" de habilidades: Excel + finanzas + inglés</li>
+            <li>Evaluar si hay ascenso posible en el trabajo actual</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 15</div>
+          <h4>Físico avanzado</h4>
+          <ul class="mes-list">
+            <li>Progresar a rutina de 5 días si el cuerpo lo permite</li>
+            <li>Tener una composición corporal notablemente mejor que al inicio</li>
+            <li>Documentar el proceso físico si quieres usarlo como motivación</li>
+            <li>Hábitos de sueño y nutrición completamente estables</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 16</div>
+          <h4>Plan del apartamento</h4>
+          <ul class="mes-list">
+            <li>Revisar el avance del apartamento con tu padre</li>
+            <li>Entender el valor del activo que están construyendo</li>
+            <li>Calcular cuánto dinero necesitas para el siguiente paso post-apartamento</li>
+            <li>Empezar a pensar si quieres vivir ahí, arrendarlo o venderlo</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 17</div>
+          <h4>Suma de todo</h4>
+          <ul class="mes-list">
+            <li>Tienes ahorro + inversión + ingreso extra + cuerpo + red</li>
+            <li>Define el siguiente gran objetivo de los próximos 18 meses</li>
+            <li>¿Estudiar algo formal? ¿Montar algo propio? ¿Cambiar de trabajo?</li>
+            <li>Revisa quién eras al mes 1 y decide hacia dónde quieres ir</li>
+          </ul>
+        </div>
+        <div class="mes-card">
+          <div class="mes-num">Mes 18</div>
+          <h4>Revisión final y nuevo plan</h4>
+          <ul class="mes-list">
+            <li>Balance total: cuánto dinero invertido, patrimonio neto</li>
+            <li>Progreso físico final documentado</li>
+            <li>Habilidades dominadas vs al inicio</li>
+            <li>Contactos y oportunidades generadas por la red</li>
+            <li>Definir el Plan 2.0: el siguiente capítulo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANZAS -->
+<section id="s-finanzas">
+  <div class="sec-header">
+    <div class="eyebrow">Dinero real</div>
+    <h2 class="sec-title">Plan Financiero</h2>
+    <p class="sec-sub">Basado en tu sueldo de $1.000.000–$2.000.000/mes.</p>
+  </div>
+  <div class="container">
+
+    <table class="budget-table">
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th>% del sueldo</th>
+          <th>Monto estimado</th>
+          <th>Notas</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cuota apartamento (con papá)</td>
+          <td>—</td>
+          <td class="amount-col">Tu parte acordada</td>
+          <td>Prioridad #1. No negocias esto.</td>
+        </tr>
+        <tr>
+          <td>Gastos fijos (transporte, comida)</td>
+          <td>40–50%</td>
+          <td class="amount-col">$400k–$900k</td>
+          <td>Registra cada gasto durante 30 días.</td>
+        </tr>
+        <tr>
+          <td>Ahorro de emergencia</td>
+          <td>10%</td>
+          <td class="amount-col">$100k–$200k</td>
+          <td>Hasta tener 3 meses de gastos guardados.</td>
+        </tr>
+        <tr>
+          <td>Inversión mensual</td>
+          <td>10–15%</td>
+          <td class="amount-col">$100k–$300k</td>
+          <td>Automatizar el primer día del mes.</td>
+        </tr>
+        <tr>
+          <td>Educación / cursos</td>
+          <td>5%</td>
+          <td class="amount-col">$50k–$100k</td>
+          <td>Udemy, libros, Coursera.</td>
+        </tr>
+        <tr class="total-row">
+          <td><strong>Libre disponible</strong></td>
+          <td>~20–30%</td>
+          <td class="amount-col">$200k–$400k</td>
+          <td>Ocio, ropa, imprevistos.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="invest-cards">
+      <div class="invest-card">
+        <h4>Paso 1 — Tyba</h4>
+        <p>Empieza aquí. App colombiana, sin mínimos absurdos, permite invertir desde $10.000. Fondos de renta fija para el fondo de emergencia. Fácil de usar, segura, regulada.</p>
+      </div>
+      <div class="invest-card">
+        <h4>Paso 2 — ETFs internacionales</h4>
+        <p>Cuando tengas más margen: ETFs del S&P 500 (VOO, SPY) o tecnología (QQQ). Bajan el riesgo por diversificación. Tu horizonte largo (20+ años) hace que el tiempo trabaje a tu favor.</p>
+      </div>
+      <div class="invest-card">
+        <h4>Paso 3 — El interés compuesto</h4>
+        <p>$150.000/mes durante 10 años a 8% anual = ~$27 millones. A 20 años = ~$89 millones. No necesitas ganar más primero. Necesitas empezar hoy con lo que tienes.</p>
+      </div>
+      <div class="invest-card">
+        <h4>Ingreso extra desde contabilidad</h4>
+        <p>Ofrece organización de gastos para negocios pequeños, declaraciones de renta, o dashboards en Excel. Cobrar $100k–$300k por proyecto es realista en el primer año. Workana, Fiverr o referencias directas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HABILIDADES -->
+<section id="s-habilidades">
+  <div class="sec-header">
+    <div class="eyebrow">Lo que vas a dominar</div>
+    <h2 class="sec-title">5 Habilidades Clave</h2>
+    <p class="sec-sub">Escogidas específicamente para tu perfil: contabilidad + inversión + futuro.</p>
+  </div>
+  <div class="container">
+    <div class="skill-block">
+      <div class="skill-header" onclick="toggleSkill(this)">
+        <h4>1. Excel Financiero Avanzado</h4>
+        <span>Haz clic para ver ▾</span>
+      </div>
+      <div class="skill-body">
+        <div class="skill-meta">
+          <div class="skill-meta-item"><div class="skill-meta-label">Por qué esta</div><div class="skill-meta-val">Ya sabes Excel básico por el trabajo. El nivel avanzado multiplica tu valor contable y te permite crear herramientas que otras personas pagan.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Qué aprender</div><div class="skill-meta-val">Tablas dinámicas, BUSCARV / XLOOKUP, fórmulas financieras (VAN, TIR, NPER), Power Query, dashboards dinámicos.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Recursos exactos</div><div class="skill-meta-val">Udemy: "Excel para Contadores" (~$20). YouTube: canal "Saber Programas" o "Excel Contable". Practica armando el presupuesto del plan.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Meta mes 6</div><div class="skill-meta-val">Crear un dashboard financiero completo en Excel desde cero. Ese archivo se convierte en tu portafolio.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-header" onclick="toggleSkill(this)">
+        <h4>2. Análisis de Inversiones</h4>
+        <span>Haz clic para ver ▾</span>
+      </div>
+      <div class="skill-body">
+        <div class="skill-meta">
+          <div class="skill-meta-item"><div class="skill-meta-label">Por qué esta</div><div class="skill-meta-val">Tu meta es que el dinero trabaje para ti. No puedes invertir bien sin entender en qué estás invirtiendo. Combinado con tu base contable, es una ventaja enorme.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Qué aprender</div><div class="skill-meta-val">Cómo funciona la bolsa, qué es un ETF vs acción, análisis fundamental básico, lectura de balances, diversificación de portafolio.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Recursos exactos</div><div class="skill-meta-val">Tyba Academy (gratis). YouTube: "Inversión Racional", "Dividendo Compuesto". Libro: "El Inversor Inteligente". Podcast: "We Study Billionaires".</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Meta mes 12</div><div class="skill-meta-val">Tener un portafolio real (aunque sea pequeño) y poder explicar por qué tienes lo que tienes.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-header" onclick="toggleSkill(this)">
+        <h4>3. Inglés Técnico Financiero</h4>
+        <span>Haz clic para ver ▾</span>
+      </div>
+      <div class="skill-body">
+        <div class="skill-meta">
+          <div class="skill-meta-item"><div class="skill-meta-label">Por qué esta</div><div class="skill-meta-val">El 80% del mejor contenido de finanzas, inversión y negocios está en inglés. Quien lo lee en la fuente tiene meses de ventaja sobre quien espera la traducción.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Qué aprender</div><div class="skill-meta-val">No inglés perfecto, sino inglés funcional: leer artículos, ver videos sin subtítulos, escribir un correo profesional básico.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Recursos exactos</div><div class="skill-meta-val">Duolingo (10 min/día). Leer: Investopedia.com. Ver: "The Plain Bagel", "Graham Stephan" en YouTube. Mes 6: libro en inglés.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Meta mes 18</div><div class="skill-meta-val">Leer un informe anual de una empresa en inglés y entenderlo. Eso te pone en el top 5% de contadores colombianos.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-header" onclick="toggleSkill(this)">
+        <h4>4. Ventas y Persuasión</h4>
+        <span>Haz clic para ver ▾</span>
+      </div>
+      <div class="skill-body">
+        <div class="skill-meta">
+          <div class="skill-meta-item"><div class="skill-meta-label">Por qué esta</div><div class="skill-meta-val">Para generar ingresos extra necesitas clientes. Para crecer en el trabajo necesitas convencer. Para invertir necesitas negociar. Todo lo que vale algo requiere vender.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Qué aprender</div><div class="skill-meta-val">Cómo presentar una propuesta, cómo hacer seguimiento sin quedar pesado, cómo comunicar valor, cómo manejar objeciones básicas.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Recursos exactos</div><div class="skill-meta-val">Libro: "Cómo Ganar Amigos e Influir en las Personas" (mes 5). YouTube: canal "Jürgen Klarić" o "Victor Küppers". Practica cotizando tus primeros servicios freelance.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Meta mes 9</div><div class="skill-meta-val">Haber conseguido al menos 1 cliente o proyecto externo usando lo aprendido.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <div class="skill-header" onclick="toggleSkill(this)">
+        <h4>5. LinkedIn y Marca Personal</h4>
+        <span>Haz clic para ver ▾</span>
+      </div>
+      <div class="skill-body">
+        <div class="skill-meta">
+          <div class="skill-meta-item"><div class="skill-meta-label">Por qué esta</div><div class="skill-meta-val">Eres menor de 20 años con experiencia laboral y conocimiento en finanzas. Eso es raro y valioso. Si nadie lo sabe, no sirve. LinkedIn convierte tu crecimiento en oportunidades.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Qué hacer</div><div class="skill-meta-val">Perfil completo con foto profesional, descripción que explique tu valor, publicaciones 2 veces/semana sobre contabilidad, finanzas o aprendizajes del plan.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Recursos exactos</div><div class="skill-meta-val">Busca "Cómo optimizar tu perfil de LinkedIn" en YouTube. Conéctate con CFOs, contadores senior, analistas financieros en Colombia. Comenta publicaciones de valor.</div></div>
+          <div class="skill-meta-item"><div class="skill-meta-label">Meta mes 12</div><div class="skill-meta-val">500+ conexiones relevantes. Al menos 1 oportunidad (trabajo, freelance o mentoría) que llegó por LinkedIn.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIBROS -->
+<section id="s-libros">
+  <div class="sec-header">
+    <div class="eyebrow">12 libros, 12 meses</div>
+    <h2 class="sec-title">Lista de Lectura</h2>
+    <p class="sec-sub">Un libro por mes, en orden. Cada uno prepara el terreno para el siguiente.</p>
+  </div>
+  <div class="container">
+    <div class="libro-list">
+      <div class="libro"><div class="libro-num">01</div><div><h4>Padre Rico Padre Pobre</h4><div class="libro-autor">Robert Kiyosaki · Mes 1</div><p>Cambia cómo piensas sobre el dinero. La diferencia entre activos y pasivos, y por qué trabajar para el dinero es la trampa del que no tiene.</p></div></div>
+      <div class="libro"><div class="libro-num">02</div><div><h4>El Hombre Más Rico de Babilonia</h4><div class="libro-autor">George S. Clason · Mes 2</div><p>Las reglas del dinero explicadas con parábolas. El 10% de todo lo que ganas es tuyo primero. Simple, poderoso, aplicable desde hoy.</p></div></div>
+      <div class="libro"><div class="libro-num">03</div><div><h4>Los Secretos de la Mente Millonaria</h4><div class="libro-autor">T. Harv Eker · Mes 3</div><p>Por qué la mente sabotea la riqueza. Cambia el patrón mental antes de que frene los resultados financieros.</p></div></div>
+      <div class="libro"><div class="libro-num">04</div><div><h4>Hábitos Atómicos</h4><div class="libro-autor">James Clear · Mes 4</div><p>El manual científico de cómo construir hábitos y eliminar los malos. Directamente aplicable al tracker y al plan diario.</p></div></div>
+      <div class="libro"><div class="libro-num">05</div><div><h4>Cómo Ganar Amigos e Influir en las Personas</h4><div class="libro-autor">Dale Carnegie · Mes 5</div><p>El libro de habilidades sociales más vendido de la historia. Aprenderás a construir relaciones genuinas y a comunicar de forma que la gente quiera ayudarte.</p></div></div>
+      <div class="libro"><div class="libro-num">06</div><div><h4>El Inversor Inteligente</h4><div class="libro-autor">Benjamin Graham · Mes 6</div><p>La biblia de la inversión en valor. Warren Buffett dice que cambió su vida. Léelo despacio, los capítulos 8 y 20 son los más importantes.</p></div></div>
+      <div class="libro"><div class="libro-num">07</div><div><h4>La Semana Laboral de 4 Horas</h4><div class="libro-autor">Tim Ferriss · Mes 7</div><p>No es sobre trabajar poco. Es sobre trabajar en lo que importa y delegar lo demás. Cambia cómo piensas sobre el tiempo y la productividad.</p></div></div>
+      <div class="libro"><div class="libro-num">08</div><div><h4>Padre Rico: El Cuadrante del Flujo de Dinero</h4><div class="libro-autor">Robert Kiyosaki · Mes 8</div><p>La diferencia entre ser empleado, autoempleado, dueño de negocio e inversor. Te ayuda a planear el movimiento de cuadrante.</p></div></div>
+      <div class="libro"><div class="libro-num">09</div><div><h4>Thinking, Fast and Slow</h4><div class="libro-autor">Daniel Kahneman · Mes 9</div><p>Cómo funciona la mente al tomar decisiones. Fundamental para invertir mejor y evitar los errores cognitivos que cuestan dinero.</p></div></div>
+      <div class="libro"><div class="libro-num">10</div><div><h4>The Psychology of Money</h4><div class="libro-autor">Morgan Housel · Mes 10</div><p>Las emociones y el comportamiento detrás del dinero. Corto, claro, y uno de los mejores libros de finanzas personales del siglo XXI.</p></div></div>
+      <div class="libro"><div class="libro-num">11</div><div><h4>Esencialismo</h4><div class="libro-autor">Greg McKeown · Mes 11</div><p>Hacer menos, pero mejor. Cómo elegir qué merece tu energía y eliminar todo lo demás. Aplicable al plan, al trabajo y a la vida.</p></div></div>
+      <div class="libro"><div class="libro-num">12</div><div><h4>El Millonario de la Puerta de al Lado</h4><div class="libro-autor">Thomas Stanley · Mes 12</div><p>Estudio real sobre cómo son los millonarios en la práctica: austeros, disciplinados, pacientes. El contrapunto perfecto para cerrar el año.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REGLAS -->
+<section id="s-reglas">
+  <div class="sec-header">
+    <div class="eyebrow">Lo que no negocias</div>
+    <h2 class="sec-title">Las Reglas del Juego</h2>
+    <p class="sec-sub">Estas no son sugerencias. Son los pilares que mantienen el plan en pie cuando la motivación se va.</p>
+  </div>
+  <div class="container">
+    <div class="regla-list">
+      <div class="regla">
+        <h4>Regla 1 — La consistencia gana</h4>
+        <p>Un día malo no rompe el plan. Abandonar sí. Si un día no puedes hacer lo que toca, haz el 20% y sigue. La racha importa más que la perfección.</p>
+      </div>
+      <div class="regla">
+        <h4>Regla 2 — El ahorro va primero</h4>
+        <p>El primer día del mes, mueves el ahorro y la inversión antes de gastar en cualquier otra cosa. Lo que queda es lo que tienes disponible, no al revés.</p>
+      </div>
+      <div class="regla">
+        <h4>Regla 3 — No hay excusas para el sueño</h4>
+        <p>Todo el plan depende de que duermas 7.5 horas. Sin sueño, no hay fuerza de voluntad, no hay músculo, no hay memoria, no hay rendimiento. El sueño no es descanso, es construcción.</p>
+      </div>
+      <div class="regla">
+        <h4>Regla 4 — El domingo planificas, no improviSas</h4>
+        <p>Cada domingo dedicas 30 minutos a revisar la semana y definir las 3 prioridades de la siguiente. Quien improvisa no llega.</p>
+      </div>
+      <div class="regla">
+        <h4>Regla 5 — Lo que no se mide no mejora</h4>
+        <p>Marca el tracker todos los días. Si no lo registras, no sabes si estás avanzando. Los datos son tu espejo honesto.</p>
+      </div>
+      <div class="regla">
+        <h4>Regla 6 — Cuida tu entorno</h4>
+        <p>Eres el promedio de las 5 personas con quienes pasas más tiempo. Busca a los que van hacia donde tú quieres llegar. Aleja a los que consumen tu energía sin aportarte nada.</p>
+      </div>
+      <div class="regla">
+        <h4>Regla 7 — Aprende del dinero antes de ganarlo</h4>
+        <p>No esperes a tener más para empezar a invertir. Empieza con $50.000 hoy. La habilidad de manejar el dinero se construye gestionando poco con disciplina, no esperando tener mucho.</p>
+      </div>
+      <div class="regla">
+        <h4>Regla 8 — El plan puede ajustarse, pero no abandonarse</h4>
+        <p>Si algo no funciona, lo cambias. Si la vida cambia, el plan se adapta. Pero la dirección siempre es la misma: físico, dinero, mente, social, felicidad.</p>
+      </div>
+    </div>
+
+    <div class="closing-box">
+      <h3>Recuérdalo cuando quieras parar.</h3>
+      <p>Tienes menos de 20 años. Ya trabajas. Ya tienes un activo en camino. Eso es lo que la mayoría de personas desearía tener a los 30. Tu única misión es no desperdiciar esa ventaja.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+function show(id) {
+  document.querySelectorAll('section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  document.getElementById('tab-' + id).classList.add('active');
+  window.scrollTo(0, 0);
+  return false;
+}
+
+function showDay(day, btn) {
+  document.querySelectorAll('[id^="rutina-"]').forEach(el => el.style.display = 'none');
+  document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('rutina-' + day).style.display = 'flex';
+  document.getElementById('rutina-' + day).style.flexDirection = 'column';
+  btn.classList.add('active');
+}
+
+function toggleSkill(header) {
+  const body = header.nextElementSibling;
+  const span = header.querySelector('span');
+  body.classList.toggle('open');
+  span.textContent = body.classList.contains('open') ? 'Cerrar ▴' : 'Haz clic para ver ▾';
+}
+</script>
+</body>
+</html>
